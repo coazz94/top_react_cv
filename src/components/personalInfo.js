@@ -29,7 +29,7 @@ function PersonalInfo() {
 
 
     return(
-        <form >
+        <div >
             <div className="formTitle"> Personal Information</div>
             <div className="formInputArea">
                 <input
@@ -89,7 +89,7 @@ function PersonalInfo() {
                     value={formData.description}
                 />
             </div>
-        </form>
+        </div>
     )
 }
 

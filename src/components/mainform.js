@@ -27,7 +27,6 @@ function MainForm() {
             return prevData.filter(component => component.props.id !== id)
         })
     }
-
     function addEdu(){
         setEduWindow(prevData => {
             return [...prevData,
@@ -44,6 +43,11 @@ function MainForm() {
             return prevData.filter(component => component.props.id !== id)
         })
     }
+
+    function gatherAlldata(){
+        console.log("here")
+    }
+
 
     return(
         <div className="mainForm">
@@ -66,6 +70,13 @@ function MainForm() {
                     />
                     {eduWindow}
                     <button onClick={addEdu}>Add</button>
+                </div>
+                <div>
+                    <button
+                        id="button--gen"
+                        onClick={gatherAlldata}
+                    >Generate CV</button>
+                    <button id="button--reset">Reset Data</button>
                 </div>
             </section>
         </div>

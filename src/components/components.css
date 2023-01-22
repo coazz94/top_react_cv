@@ -63,12 +63,21 @@ section {
 }
 
 button{
-    padding: 0.5rem;
+    padding: 0.6rem;
+    font-size: 18px;
     border-radius: 5px;
     font-weight: bold;
     background-color: rgb(51, 51, 51);
     color: rgb(238, 238, 238);
-    margin: 10px;
-    width: 90%;
+    margin: 15px;
+    width: 97%;
     cursor: pointer;
+}
+
+#button--gen{
+    background-color: rgb(47, 173, 21);
+}
+
+#button--reset{
+    background-color: rgb(197, 81, 13);
 }
