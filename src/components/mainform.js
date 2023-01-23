@@ -12,32 +12,21 @@ function MainForm() {
     const [eduWindow, setEduWindow] = useState([])
 
 
-    const[personalFormData, setPersonalFormData] = useState(
-        {
-            firstName:"",
-            lastName:"",
-            title: "",
-            adress:"",
-            phoneNumber:"",
-            email:"",
-            description:"",
-        }
+    const[cvData, setCvData] = useState(
+            {
+                PersonalInfo: {
+                },
+                Experience:{
+                },
+            }
     )
 
-    const[ExperienceFormData, setExperienceFormData] = useState(
-        {
-            position:"",
-            company:"",
-            city:"",
-            from:"",
-            to: "",
-        }
-    )
 
     useEffect(() => {
-        console.log(personalFormData)
-        console.log(ExperienceFormData)
-    }, [personalFormData, ExperienceFormData])
+        console.log(cvData)
+    }, [cvData])
+
+
 
 
     function addExp(){
@@ -46,7 +35,9 @@ function MainForm() {
                 <Experience
                     key={expWindow.length}
                     remove={removeExp}
-                    id={nanoid()}
+                    // id={nanoid()} // vlt hier immer eine id weiter als letzte match all the experience in object
+                    onChange = {setCvData}
+                    formData = {cvData}
                 />
                 ]
         })
@@ -85,16 +76,16 @@ function MainForm() {
             <section>
                 <PersonalInfo
                     sendData = {gatherAlldata}
-                    onChange = {setPersonalFormData}
-                    formData = {personalFormData}
+                    onChange = {setCvData}
+                    formData = {cvData}
                 />
                 <div>
                     <Experience
                         key={expWindow.length}
                         remove={removeExp}
                         id={1}
-                        onChange={setExperienceFormData}
-                        formData = {ExperienceFormData}
+                        onChange = {setCvData}
+                        formData = {cvData}
                         />
                     {expWindow}
                     <button onClick={addExp}>Add</button>

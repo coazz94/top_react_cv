@@ -5,13 +5,14 @@ function PersonalInfo(props) {
     function handelChange(event) {
         const {value, name} = event.target
         props.onChange(prevData => {
-            return(
-                {
-                    ...prevData,
-                    [name]:value,
-                }
-            )
-        })
+             return(
+                 {
+                     ...prevData,
+                     PersonalInfo:{
+                         [name]:value,
+                     }
+                 })
+         })
     }
 
     return(
