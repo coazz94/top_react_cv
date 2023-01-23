@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function PersonalInfo() {
+function PersonalInfo(props) {
 
     const[formData, setFormData] = useState(
         {
@@ -13,6 +13,10 @@ function PersonalInfo() {
             description:"",
         }
     )
+
+    useEffect(() => {
+       return () => props.sendData(formData)
+    },[formData])
 
 
     function handelChange(event) {

@@ -44,15 +44,19 @@ function MainForm() {
         })
     }
 
-    function gatherAlldata(){
-        console.log("here")
+    function gatherAlldata(info){
+        console.log(info)
     }
+
+    // https://stackoverflow.com/questions/65607200/react-collect-child-component-data-on-some-event-from-the-parent-component
 
 
     return(
         <div className="mainForm">
             <section>
-                <PersonalInfo />
+                <PersonalInfo
+                    sendData = {gatherAlldata}
+                />
                 <div>
                     <Experience
                         key={expWindow.length}
