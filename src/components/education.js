@@ -1,28 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Education(props) {
 
-    const[formData, setFormData] = useState(
-        {
-            uniName:"",
-            city:"",
-            degree:"",
-            subject:"",
-            from:"",
-            to: "",
-        }
-    )
 
     function handelChange(event) {
-        const {value, name} = event.target
-        setFormData(prevData => {
-            return(
-                {
-                    ...prevData,
-                    [name]:value,
-                }
-            )
-        })
+        let {value, name} = event.target
+        const correctName = `Education_${props.id}`
+        props.onChange(prevData => {
+             return(
+                 {
+                     ...prevData,
+                     [correctName]:{
+                         [name]:value,
+                     }
+                 })
+         })
     }
 
 
@@ -36,46 +28,46 @@ function Education(props) {
                     placeholder="University Name"
                     onChange={handelChange}
                     name="uniName"
-                    value={formData.uniName}
+                    // value={props.formData.uniName}
                 />
                 <input
                     type="text"
                     placeholder="City"
                     onChange={handelChange}
                     name="city"
-                    value={formData.city}
+                    // value={formData.city}
                 />
                 <input
                     type="text"
                     placeholder="Degree"
                     onChange={handelChange}
                     name="degree"
-                    value={formData.degree}
+                    // value={formData.degree}
                 />
                 <input
                     type="text"
                     placeholder="Subject"
                     onChange={handelChange}
                     name="subject"
-                    value={formData.subject}
+                    // value={formData.subject}
                 />
                 <input
                     type="text"
                     placeholder="From"
                     onChange={handelChange}
                     name="from"
-                    value={formData.from}
+                    // value={formData.from}
                 />
                 <input
                     type="text"
                     placeholder="To"
                     onChange={handelChange}
                     name="to"
-                    value={formData.to}
+                    // value={formData.to}
                 />
             </div>
             </form>
-            {props.id !== 99 && <button onClick={() => props.remove(props.id)}>Remove</button>}
+            {props.id !== 1 && <button onClick={() => props.remove(props.id)}>Remove</button>}
         </div>
     )
 }

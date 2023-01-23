@@ -2,7 +2,7 @@ import "./components.css"
 import React, {useEffect, useState } from 'react';
 import { PersonalInfo } from "./personalInfo"
 import { Experience } from "./experience"
-import { nanoid } from 'nanoid'
+// import { nanoid } from 'nanoid'
 import { Education } from "./education";
 
 
@@ -10,32 +10,28 @@ function MainForm() {
 
     const [expWindow, setExpWindow] = useState([])
     const [eduWindow, setEduWindow] = useState([])
-
-
-    const[cvData, setCvData] = useState(
-            {
-                PersonalInfo: {
-                },
-                Experience:{
-                },
-            }
-    )
+    const[cvData, setCvData] = useState({})
 
 
     useEffect(() => {
         console.log(cvData)
     }, [cvData])
 
-
-
-
+    // Get the id for new Sections fot he CV to seperate Values
+    function getId(string, obj) {
+        const x = Object.keys(obj);
+        let id = x.reduce((acc, current)  => {
+                return current.split("_")[0] === string ? acc + 1 : acc;
+                }, 1)
+        return id;
+      }
     function addExp(){
         setExpWindow(prevData => {
             return [...prevData,
                 <Experience
                     key={expWindow.length}
                     remove={removeExp}
-                    // id={nanoid()} // vlt hier immer eine id weiter als letzte match all the experience in object
+                    id = {getId("Experience", cvData)}
                     onChange = {setCvData}
                     formData = {cvData}
                 />
@@ -53,7 +49,9 @@ function MainForm() {
                 <Education
                     key={eduWindow.length}
                     remove={removeEdu}
-                    id={nanoid()}
+                    id={getId("Education", cvData)}
+                    onChange = {setCvData}
+                    formData = {cvData}
                 />
                 ]
         })
@@ -62,13 +60,15 @@ function MainForm() {
         setEduWindow(prevData => {
             return prevData.filter(component => component.props.id !== id)
         })
+
+        // setCvData(prevData => {
+        //     return
+        // })
     }
 
     function gatherAlldata(info){
         console.log(info)
     }
-
-    // https://stackoverflow.com/questions/65607200/react-collect-child-component-data-on-some-event-from-the-parent-component
 
 
     return(
@@ -80,24 +80,12 @@ function MainForm() {
                     formData = {cvData}
                 />
                 <div>
-                    <Experience
-                        key={expWindow.length}
-                        remove={removeExp}
-                        id={1}
-                        onChange = {setCvData}
-                        formData = {cvData}
-                        />
                     {expWindow}
-                    <button onClick={addExp}>Add</button>
+                    <button onClick={addExp}>Add Experience</button>
                 </div>
                 <div>
-                    <Education
-                        key={eduWindow.length}
-                        remove={removeEdu}
-                        id={99}
-                    />
                     {eduWindow}
-                    <button onClick={addEdu}>Add</button>
+                    <button onClick={addEdu}>Add Education</button>
                 </div>
                 <div>
                     <button

@@ -4,12 +4,13 @@ function Experience(props) {
 
 
     function handelChange(event) {
-        const {value, name} = event.target
+        let {value, name} = event.target
+        const correctName = `Experience_${props.id}`
         props.onChange(prevData => {
              return(
                  {
                      ...prevData,
-                     Experience:{
+                     [correctName]:{
                          [name]:value,
                      }
                  })
