@@ -1,20 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Experience(props) {
 
-    const[formData, setFormData] = useState(
-        {
-            position:"",
-            company:"",
-            city:"",
-            from:"",
-            to: "",
-        }
-    )
 
     function handelChange(event) {
         const {value, name} = event.target
-        setFormData(prevData => {
+        props.onChange(prevData => {
             return(
                 {
                     ...prevData,
@@ -35,35 +26,35 @@ function Experience(props) {
                     placeholder="Position"
                     onChange={handelChange}
                     name="position"
-                    value={formData.position}
+                    value={props.onChange.position}
                 />
                 <input
                     type="text"
                     placeholder="Company"
                     onChange={handelChange}
                     name="company"
-                    value={formData.company}
+                    value={props.onChange.company}
                 />
                 <input
                     type="text"
                     placeholder="City"
                     onChange={handelChange}
                     name="city"
-                    value={formData.city}
+                    value={props.onChange.city}
                 />
                 <input
                     type="text"
                     placeholder="From"
                     onChange={handelChange}
                     name="from"
-                    value={formData.from}
+                    value={props.onChange.from}
                 />
                 <input
                     type="text"
                     placeholder="To"
                     onChange={handelChange}
                     name="to"
-                    value={formData.to}
+                    value={props.onChange.to}
                 />
             </div>
             </form>

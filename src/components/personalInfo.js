@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 function PersonalInfo(props) {
 
-    const[formData, setFormData] = useState(
-        {
-            firstName:"",
-            lastName:"",
-            title: "",
-            adress:"",
-            phoneNumber:"",
-            email:"",
-            description:"",
-        }
-    )
-
-    useEffect(() => {
-       return () => props.sendData(formData)
-    },[formData])
-
-
     function handelChange(event) {
         const {value, name} = event.target
-        setFormData(prevData => {
+        props.onChange(prevData => {
             return(
                 {
                     ...prevData,
@@ -30,7 +13,6 @@ function PersonalInfo(props) {
             )
         })
     }
-
 
     return(
         <div >
@@ -41,56 +23,56 @@ function PersonalInfo(props) {
                     placeholder="First Name"
                     onChange={handelChange}
                     name="firstName"
-                    value={formData.firstName}
+                    value={props.formData.firstName}
                 />
                 <input
                     type="text"
                     placeholder="Last Name"
                     onChange={handelChange}
                     name="lastName"
-                    value={formData.lastName}
+                    value={props.formData.lastName}
                 />
                 <input
                     type="text"
                     placeholder="Title e.g Developer"
                     onChange={handelChange}
                     name="title"
-                    value={formData.title}
+                    value={props.formData.title}
                 />
                 <input
                     type="text"
                     placeholder="Photo Edit this"
                     // onChange={handelChange}
                     name="photo"
-                    // value={formData.}
+                    // value={props.formData.}
                 />
                 <input
                     type="text"
                     placeholder="Adress"
                     onChange={handelChange}
                     name="adress"
-                    value={formData.adress}
+                    value={props.formData.adress}
                 />
                 <input
                     type="text"
                     placeholder="Phone Number"
                     onChange={handelChange}
                     name="phoneNumber"
-                    value={formData.phoneNumber}
+                    value={props.formData.phoneNumber}
                 />
                 <input
                     type="text"
                     placeholder="Email"
                     onChange={handelChange}
                     name="email"
-                    value={formData.email}
+                    value={props.formData.email}
                 />
                 <input
                     type="text"
                     placeholder="Description"
                     onChange={handelChange}
                     name="description"
-                    value={formData.description}
+                    value={props.formData.description}
                 />
             </div>
         </div>

@@ -1,5 +1,5 @@
 import "./components.css"
-import React, {useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { PersonalInfo } from "./personalInfo"
 import { Experience } from "./experience"
 import { nanoid } from 'nanoid'
@@ -10,6 +10,35 @@ function MainForm() {
 
     const [expWindow, setExpWindow] = useState([])
     const [eduWindow, setEduWindow] = useState([])
+
+
+    const[personalFormData, setPersonalFormData] = useState(
+        {
+            firstName:"",
+            lastName:"",
+            title: "",
+            adress:"",
+            phoneNumber:"",
+            email:"",
+            description:"",
+        }
+    )
+
+    const[ExperienceFormData, setExperienceFormData] = useState(
+        {
+            position:"",
+            company:"",
+            city:"",
+            from:"",
+            to: "",
+        }
+    )
+
+    useEffect(() => {
+        console.log(personalFormData)
+        console.log(ExperienceFormData)
+    }, [personalFormData, ExperienceFormData])
+
 
     function addExp(){
         setExpWindow(prevData => {
@@ -56,12 +85,16 @@ function MainForm() {
             <section>
                 <PersonalInfo
                     sendData = {gatherAlldata}
+                    onChange = {setPersonalFormData}
+                    formData = {personalFormData}
                 />
                 <div>
                     <Experience
                         key={expWindow.length}
                         remove={removeExp}
                         id={1}
+                        onChange={setExperienceFormData}
+                        formData = {ExperienceFormData}
                         />
                     {expWindow}
                     <button onClick={addExp}>Add</button>
