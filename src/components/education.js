@@ -67,7 +67,7 @@ function Education(props) {
                 />
             </div>
             </form>
-            {props.id !== 1 && <button onClick={() => props.remove(props.id)}>Remove</button>}
+            <button onClick={() => props.remove(props.id)}>Remove</button>
         </div>
     )
 }
