@@ -3,7 +3,6 @@ import React, {useEffect, useState } from 'react';
 import { PersonalInfo } from "./personalInfo"
 import { Experience } from "./experience"
 import { PersonalCv } from './cv';
-// import { nanoid } from 'nanoid'
 import { Education } from "./education";
 
 
@@ -22,16 +21,6 @@ function MainForm() {
     useEffect(() => {
         console.log(cvData)
     }, [cvData])
-
-    // Get the id for new Sections fot he CV to seperate Values
-    // function getId(string, obj) {
-    //     const x = Object.keys(obj);
-    //     let id = x.reduce((acc, current)  => {
-    //             return current.split("_")[0] === string ? acc + 1 : acc;
-    //             }, 1)
-    //     return id;
-    //   }
-
 
     function addExp(){
         setExpWindow(prevData => {
@@ -98,7 +87,7 @@ function MainForm() {
     }
 
     function sendCvData(){
-        setShowCv(prevData => !prevData)
+        Object.keys(cvData).length > 0 ? setShowCv(prevData => !prevData) : alert("input missing")
     }
 
 
@@ -108,7 +97,6 @@ function MainForm() {
             <section>
                 <PersonalInfo
                     onChange = {setCvData}
-                    formData = {cvData}
                 />
                 <div>
                     {expWindow}
@@ -129,7 +117,7 @@ function MainForm() {
             </div>
             {showCv &&
                 <PersonalCv
-                    personalData={cvData.PersonalInfo.firstName}
+                    cvData={cvData}
                     x={"mjau"}
             />
             }
