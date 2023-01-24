@@ -10,9 +10,8 @@ function Education(props) {
              return(
                  {
                      ...prevData,
-                     [correctName]:{
-                         [name]:value,
-                     }
+                    ...correctName,
+                         [name] : value,
                  })
          })
     }
