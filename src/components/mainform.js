@@ -2,6 +2,7 @@ import "./components.css"
 import React, {useEffect, useState } from 'react';
 import { PersonalInfo } from "./personalInfo"
 import { Experience } from "./experience"
+import { PersonalCv } from './cv';
 // import { nanoid } from 'nanoid'
 import { Education } from "./education";
 
@@ -10,6 +11,7 @@ function MainForm() {
 
     const [expWindow, setExpWindow] = useState([])
     const [eduWindow, setEduWindow] = useState([])
+    const [showCv, setShowCv] = useState(false)
     const [idSave, setID] = useState({
         Experience: 1,
         Education: 1,
@@ -95,16 +97,16 @@ function MainForm() {
         })
     }
 
-    function gatherAlldata(info){
-        console.log(info)
+    function sendCvData(){
+        setShowCv(prevData => !prevData)
     }
 
 
     return(
-        <div className="mainForm">
+        <div>
+            <div className="mainForm">
             <section>
                 <PersonalInfo
-                    sendData = {gatherAlldata}
                     onChange = {setCvData}
                     formData = {cvData}
                 />
@@ -119,12 +121,21 @@ function MainForm() {
                 <div>
                     <button
                         id="button--gen"
-                        onClick={gatherAlldata}
+                        onClick={sendCvData}
                     >Generate CV</button>
                     <button id="button--reset">Reset Data</button>
                 </div>
             </section>
+            </div>
+            {showCv &&
+                <PersonalCv
+                    personalData={cvData.PersonalInfo.firstName}
+                    x={"mjau"}
+            />
+            }
         </div>
+
+
     )
 }
 
