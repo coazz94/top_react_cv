@@ -8,19 +8,16 @@ function PersonalCv(props) {
                  <div id="page-wrap">
                     {/* <img src="images/cthulu.png" alt="Photo of Cthulu" id="pic" /> */}
                     <div id="contact-info" className="vcard">
-                       <h1 className="fn">{props.personalData}</h1>
+                       <h1 className="fn">{props.cvData.persInfo.firstName} {props.cvData.persInfo.lastName}</h1>
+                       {/* <h1 className="fn">test</h1> */}
                        <p>
-                          Cell: <span className="tel">555-666-7777</span><br />
-                          Email: <a className="email" href="mailto:greatoldone@lovecraft.com">greatoldone@lovecraft.com</a>
+                          Cell: <span className="tel">{props.cvData.persInfo.phoneNumber}</span><br />
+                          Email: <span className="tel">{props.cvData.persInfo.email}</span>
+                          {/* Adress: <span className="tel">{props.cvData.persInfo.adress}</span> */}
                        </p>
                     </div>
                     <div id="objective">
-                       <p>
-                          I am an outgoing and energetic (ask anybody) young professional, seeking a
-                          career that fits my professional skills, personality, and murderous tendencies.
-                          My squid-like head is a masterful problem solver and inspires fear in who gaze upon it.
-                          I can bring world domination to your organization.
-                       </p>
+                       <p>{props.cvData.persInfo.description}</p>
                     </div>
                     <div className="clear"></div>
                     <dl>

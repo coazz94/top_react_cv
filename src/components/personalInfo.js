@@ -2,15 +2,15 @@ import React from 'react';
 
 function PersonalInfo(props) {
 
+
     function handelChange(event) {
         const {value, name} = event.target
         props.onChange(prevData => {
-             return(
-                 {
-                     ...prevData,
-                     test:{
-                        [name]:value,
-                 }})
+            const copiedObj = Object.assign({}, prevData);
+            if (copiedObj.persInfo === undefined)  copiedObj.persInfo = {};
+            copiedObj.persInfo[name] = value;
+
+            return(copiedObj)
          })
     }
 
@@ -37,7 +37,7 @@ function PersonalInfo(props) {
                     placeholder="Title e.g Developer"
                     onChange={handelChange}
                     name="title"
-                    value={props.formData.title}
+                    // value={props.formData.title}
                 />
                 <input
                     type="text"
@@ -58,7 +58,6 @@ function PersonalInfo(props) {
                     placeholder="Phone Number"
                     onChange={handelChange}
                     name="phoneNumber"
-                    // value={props.formData.phoneNumber}
                 />
                 <input
                     type="text"

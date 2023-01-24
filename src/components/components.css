@@ -93,6 +93,7 @@ button{
 
 .cv--data {
     background-color: white;
+    overflow: hidden;
     padding: 20px;
 }
 

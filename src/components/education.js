@@ -7,12 +7,11 @@ function Education(props) {
         let {value, name} = event.target
         const correctName = `Education_${props.id}`
         props.onChange(prevData => {
-             return(
-                 {
-                     ...prevData,
-                    ...correctName,
-                         [name] : value,
-                 })
+            const copiedObj = Object.assign({}, prevData);
+            if (copiedObj[correctName] === undefined)  copiedObj[correctName] = {};
+            copiedObj[correctName][name] = value;
+
+             return(copiedObj)
          })
     }
 
