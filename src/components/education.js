@@ -8,8 +8,8 @@ function Education(props) {
         const correctName = `Education_${props.id}`
         props.onChange(prevData => {
             const copiedObj = Object.assign({}, prevData);
-            if (copiedObj[correctName] === undefined)  copiedObj[correctName] = {};
-            copiedObj[correctName][name] = value;
+            if (copiedObj.edu[correctName] === undefined)  copiedObj.edu[correctName] = {};
+            copiedObj.edu[correctName][name] = value;
 
              return(copiedObj)
          })

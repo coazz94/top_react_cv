@@ -8,8 +8,8 @@ function Experience(props) {
         const correctName = `Experience_${props.id}`
         props.onChange(prevData => {
             const copiedObj = Object.assign({}, prevData);
-            if (copiedObj[correctName] === undefined)  copiedObj[correctName] = {};
-            copiedObj[correctName][name] = value;
+            if (copiedObj.exp[correctName] === undefined)  copiedObj.exp[correctName] = {};
+            copiedObj.exp[correctName][name] = value;
             return(copiedObj)
          })
     }

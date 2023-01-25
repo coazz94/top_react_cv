@@ -15,11 +15,14 @@ function MainForm() {
         Experience: 1,
         Education: 1,
     })
-    const[cvData, setCvData] = useState({})
+    const[cvData, setCvData] = useState({
+        exp:{},
+        edu:{}
+    })
 
 
     useEffect(() => {
-        console.log(cvData)
+        console.log(Object.keys(cvData.exp))
     }, [cvData])
 
     function addExp(){
@@ -28,7 +31,6 @@ function MainForm() {
                 <Experience
                     key={expWindow.length}
                     remove={removeExp}
-                    // id = {getId("Experience", cvData)}
                     id = {idSave.Experience}
                     onChange = {setCvData}
                     formData = {cvData}
@@ -59,7 +61,6 @@ function MainForm() {
                 <Education
                     key={eduWindow.length}
                     remove={removeEdu}
-                    // id={getId("Education", cvData)}
                     id = {idSave.Education}
                     onChange = {setCvData}
                     formData = {cvData}
@@ -118,12 +119,9 @@ function MainForm() {
             {showCv &&
                 <PersonalCv
                     cvData={cvData}
-                    x={"mjau"}
             />
             }
         </div>
-
-
     )
 }
 

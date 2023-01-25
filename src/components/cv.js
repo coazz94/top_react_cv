@@ -1,6 +1,17 @@
 import React from 'react';
+import { ExperienceSection } from './exp';
 
 function PersonalCv(props) {
+
+   let x = Object.keys(props.cvData.exp).length
+   let z = [];
+   for(let i = 0; i < x; i++) {
+      console.log("here")
+      z.push(<ExperienceSection/>)
+   }
+
+   console.log(z)
+
     return(
         <div className="cv--section">
            <section>
@@ -8,27 +19,27 @@ function PersonalCv(props) {
                  <div id="page-wrap">
                     {/* <img src="images/cthulu.png" alt="Photo of Cthulu" id="pic" /> */}
                     <div id="contact-info" className="vcard">
-                       <h1 className="fn">{props.cvData.persInfo.firstName} {props.cvData.persInfo.lastName}</h1>
+                       {/* <h1 className="fn">{props.cvData.persInfo.firstName} {props.cvData.persInfo.lastName}</h1> */}
+                       <h1 className="fn">test</h1>
                        {/* <h1 className="fn">test</h1> */}
                        <p>
-                          Cell: <span className="tel">{props.cvData.persInfo.phoneNumber}</span><br />
-                          Email: <span className="tel">{props.cvData.persInfo.email}</span>
+                          {/* Cell: <span className="tel">{props.cvData.persInfo.phoneNumber}</span><br /> */}
+                          Cell: <span className="tel">test</span><br />
+                          {/* Email: <span className="tel">{props.cvData.persInfo.email}</span> */}
+                          Email: <span className="tel">test</span>
                           {/* Adress: <span className="tel">{props.cvData.persInfo.adress}</span> */}
                        </p>
                     </div>
                     <div id="objective">
-                       <p>{props.cvData.persInfo.description}</p>
+                       {/* <p>{props.cvData.persInfo.description}</p> */}
+                       <p>test</p>
                     </div>
                     <div className="clear"></div>
                     <dl>
                        <dd className="clear"></dd>
                        <dt>Education</dt>
-                       <dd>
-                          <h2>Withering Madness University - Planet Vhoorl</h2>
-                          <p><strong>Major:</strong> Public Relations<br />
-                             <strong>Minor:</strong> Scale Tending
-                          </p>
-                       </dd>
+                        {/* Placeholder */}
+                        {z}
                        <dd className="clear"></dd>
                        <dt>Skills</dt>
                        <dd>
