@@ -3,14 +3,26 @@ import { ExperienceSection } from './exp';
 
 function PersonalCv(props) {
 
-   let x = Object.keys(props.cvData.exp).length
-   let z = [];
-   for(let i = 0; i < x; i++) {
-      console.log("here")
-      z.push(<ExperienceSection/>)
-   }
+   const expArray = Object.keys(props.cvData.exp)
+   // let z = [];
+   // for(let i = 0; i < x.length; i++) {
+   //    z = [...z,<ExperienceSection
+   //       key = {i + 10}
+   //       data = {props.cvData.exp[x[i]]}
+   //    />]
+   // }
 
-   console.log(z)
+
+
+   let expSections = expArray.map((expx,index) => {
+      return (
+         <ExperienceSection
+            data={props.cvData.exp[expArray[index]]}
+            key= {i + 10}
+             />
+      )
+   })
+
 
     return(
         <div className="cv--section">
@@ -39,7 +51,7 @@ function PersonalCv(props) {
                        <dd className="clear"></dd>
                        <dt>Education</dt>
                         {/* Placeholder */}
-                        {z}
+                        {expSections}
                        <dd className="clear"></dd>
                        <dt>Skills</dt>
                        <dd>
