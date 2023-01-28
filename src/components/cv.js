@@ -3,24 +3,14 @@ import { ExperienceSection } from './exp';
 
 function PersonalCv(props) {
 
-   const expArray = Object.keys(props.cvData.exp)
-   // let z = [];
-   // for(let i = 0; i < x.length; i++) {
-   //    z = [...z,<ExperienceSection
-   //       key = {i + 10}
-   //       data = {props.cvData.exp[x[i]]}
-   //    />]
-   // }
+   const eduArray = Object.keys(props.cvData.exp)
 
-
-
-   let expSections = expArray.map((expx,index) => {
+   let eduSection = eduArray.map((edux,index) => {
       return (
          <ExperienceSection
-            data={props.cvData.exp[expArray[index]]}
-            key= {i + 10}
-             />
-      )
+            data={props.cvData.exp[edux]}
+            key= {index + 10}
+             />)
    })
 
 
@@ -31,27 +21,21 @@ function PersonalCv(props) {
                  <div id="page-wrap">
                     {/* <img src="images/cthulu.png" alt="Photo of Cthulu" id="pic" /> */}
                     <div id="contact-info" className="vcard">
-                       {/* <h1 className="fn">{props.cvData.persInfo.firstName} {props.cvData.persInfo.lastName}</h1> */}
-                       <h1 className="fn">test</h1>
-                       {/* <h1 className="fn">test</h1> */}
+                       <h1 className="fn">{props.cvData.persInfo.firstName} {props.cvData.persInfo.lastName}</h1>
                        <p>
-                          {/* Cell: <span className="tel">{props.cvData.persInfo.phoneNumber}</span><br /> */}
-                          Cell: <span className="tel">test</span><br />
-                          {/* Email: <span className="tel">{props.cvData.persInfo.email}</span> */}
-                          Email: <span className="tel">test</span>
-                          {/* Adress: <span className="tel">{props.cvData.persInfo.adress}</span> */}
+                          Cell: <span className="tel">{props.cvData.persInfo.phoneNumber}</span><br />
+                          Email: <span className="tel">{props.cvData.persInfo.email}</span><br />
+                          Adress: <span className="tel">{props.cvData.persInfo.adress}</span>
                        </p>
                     </div>
                     <div id="objective">
-                       {/* <p>{props.cvData.persInfo.description}</p> */}
-                       <p>test</p>
+                       <p>{props.cvData.persInfo.description}</p>
                     </div>
                     <div className="clear"></div>
                     <dl>
                        <dd className="clear"></dd>
                        <dt>Education</dt>
-                        {/* Placeholder */}
-                        {expSections}
+                        {eduSection}
                        <dd className="clear"></dd>
                        <dt>Skills</dt>
                        <dd>

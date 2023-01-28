@@ -10,19 +10,37 @@ function MainForm() {
 
     const [expWindow, setExpWindow] = useState([])
     const [eduWindow, setEduWindow] = useState([])
-    const [showCv, setShowCv] = useState(false)
+    const [showCv, setShowCv] = useState(true)
     const [idSave, setID] = useState({
         Experience: 1,
         Education: 1,
     })
     const[cvData, setCvData] = useState({
-        exp:{},
+        persInfo:{
+            "firstName": "Aleksandar",
+            "lastName": "Popovic",
+            "title": "Sofware Developer",
+            "adress": "Leebgasse 56",
+            "phoneNumber": "0660 9410299",
+            "email": "aco94@hotmail.de",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi"
+        },
+        exp:{
+            "Education_1": {
+                "uniName": "Harvard",
+                "city": "London",
+                "degree": "Master",
+                "subject": "CS Sience",
+                "from": "2022 06",
+                "to": "2022 03"
+            }
+        },
         edu:{}
     })
 
 
     useEffect(() => {
-        console.log(Object.keys(cvData.exp))
+        console.log(cvData)
     }, [cvData])
 
     function addExp(){
