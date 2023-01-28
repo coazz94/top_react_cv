@@ -1,4 +1,4 @@
-import "./components.css";
+import "../styles/components.css";
 import React, { useState } from "react";
 import { PersonalInfo } from "./personalInfo";
 import { Experience } from "./experience";
