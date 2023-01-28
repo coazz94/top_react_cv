@@ -1,14 +1,25 @@
 import React from 'react';
-import { ExperienceSection } from './exp';
+import { EducationSection } from './educSection';
+import { ExperienceSection } from './expSection';
 
 function PersonalCv(props) {
 
-   const eduArray = Object.keys(props.cvData.exp)
+   const eduArray = Object.keys(props.cvData.edu)
 
    let eduSection = eduArray.map((edux,index) => {
       return (
+         <EducationSection
+            data={props.cvData.edu[edux]}
+            key= {index + 10}
+             />)
+   })
+
+   const expArray = Object.keys(props.cvData.exp)
+
+   let expSection = expArray.map((expx,index) => {
+      return (
          <ExperienceSection
-            data={props.cvData.exp[edux]}
+            data={props.cvData.exp[expx]}
             key= {index + 10}
              />)
    })
@@ -46,20 +57,8 @@ function PersonalCv(props) {
                        </dd>
                        <dd className="clear"></dd>
                        <dt>Experience</dt>
-                       <dd>
-                          <h2>Doomsday Cult <span>Leader/Overlord - Baton Rogue, LA - 1926-2010</span></h2>
-                          <ul>
-                             <li>Inspired and won highest peasant death competition among servants</li>
-                             <li>Helped coordinate managers to grow cult following</li>
-                             <li>Provided untimely deaths to all who opposed</li>
-                          </ul>
-                          <h2>The Watering Hole <span>Bartender/Server - Milwaukee, WI - 2009</span></h2>
-                          <ul>
-                             <li>Worked on grass-roots promotional campaigns</li>
-                             <li>Reduced theft and property damage percentages</li>
-                             <li>Janitorial work, Laundry</li>
-                          </ul>
-                       </dd>
+                        {expSection}
+
                        <dd className="clear"></dd>
                        <dt>Hobbies</dt>
                        <dd>World Domination, Deep Sea Diving, Murder Most Foul</dd>

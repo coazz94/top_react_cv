@@ -1,5 +1,5 @@
 import "./components.css"
-import React, {useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { PersonalInfo } from "./personalInfo"
 import { Experience } from "./experience"
 import { PersonalCv } from './cv';
@@ -10,39 +10,62 @@ function MainForm() {
 
     const [expWindow, setExpWindow] = useState([])
     const [eduWindow, setEduWindow] = useState([])
-    const [showCv, setShowCv] = useState(true)
+    const [showCv, setShowCv] = useState(false)
     const [idSave, setID] = useState({
         Experience: 1,
         Education: 1,
     })
     const[cvData, setCvData] = useState({
-        persInfo:{
-            "firstName": "Aleksandar",
-            "lastName": "Popovic",
-            "title": "Sofware Developer",
-            "adress": "Leebgasse 56",
-            "phoneNumber": "0660 9410299",
-            "email": "aco94@hotmail.de",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi"
-        },
-        exp:{
-            "Education_1": {
-                "uniName": "Harvard",
-                "city": "London",
-                "degree": "Master",
-                "subject": "CS Sience",
-                "from": "2022 06",
-                "to": "2022 03"
-            }
-        },
-        edu:{}
+        exp:{},
+        edu:{},
     })
 
+    function resetData(){
+        setCvData(prevData => {
+            return({
+                exp:{},
+                edu:{},
+            }
+            )
+        })
+        setShowCv(prevData => !prevData)
+    }
 
-    useEffect(() => {
-        console.log(cvData)
-    }, [cvData])
+    function generateTemplateCV() {
+        setCvData((prevData) => {
+            return(
+                {persInfo:{
+                    "firstName": "Aleksandar",
+                    "lastName": "Popovic",
+                    "title": "Sofware Developer",
+                    "adress": "Leebgasse 56",
+                    "phoneNumber": "0660 9410299",
+                    "email": "aco94@hotmail.de",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi"
+                },
+                exp:{
+                    "Experience_1":{
+                        "position": "Software Developr",
+                        "company": "Siemens Energy",
+                        "city": "Vienna",
+                        "from": "2020",
+                        "to": "2024"}
 
+                },
+                edu:{
+                    "Education_1": {
+                        "uniName": "Harvard",
+                        "city": "London",
+                        "degree": "Master",
+                        "subject": "CS Sience",
+                        "from": "2022 06",
+                        "to": "2022 03"
+                    }
+                }}
+            )
+        })
+        setShowCv(prevData => !prevData)
+    }
     function addExp(){
         setExpWindow(prevData => {
             return [...prevData,
@@ -104,9 +127,8 @@ function MainForm() {
             return newData
         })
     }
-
     function sendCvData(){
-        Object.keys(cvData).length > 0 ? setShowCv(prevData => !prevData) : alert("input missing")
+        Object.keys(cvData).length > 2 ? setShowCv(prevData => !prevData) : alert("input missing")
     }
 
 
@@ -130,7 +152,8 @@ function MainForm() {
                         id="button--gen"
                         onClick={sendCvData}
                     >Generate CV</button>
-                    <button id="button--reset">Reset Data</button>
+                    <button id="button--test" onClick={generateTemplateCV}>CV Template</button>
+                    <button id="button--reset" onClick={resetData}>Reset Data</button>
                 </div>
             </section>
             </div>
