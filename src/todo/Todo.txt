@@ -1,0 +1,5 @@
+
+
+1. Add missing Informations Inputs (hobby, Skills)
+
+2. Save Input to Local Data to it will not be deleted at every Reload
